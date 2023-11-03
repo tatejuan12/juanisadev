@@ -1,0 +1,42 @@
+//*****Base*****//
+$max-width: 1100px;
+$border-radius: 12px;
+//*****Text*****//
+$font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+  "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+  "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+//*****Background Colors*****//
+$foreground-rgb: rgb(245, 243, 244);
+$foreground-secondary-rbg: rgb(211, 211, 211);
+$background-start-rgb: rgb(11, 9, 10);
+$background-end-rgb: rgb(22, 26, 29);
+
+$callout-rgb: rgb(20, 20, 20);
+
+//*****Colors*****//
+$primary-color: rgb(1, 42, 74);
+$secondary-color: rgb(42, 111, 151);
+$tertiary-color: rgb(137, 194, 217);
+$primary-alt-one: rbg(1, 58, 99);
+$primary-alt-two: rbg(1, 73, 124);
+$primary-alt-three: rbg(1, 79, 134);
+$secondary-alt-one: rbg(44, 125, 160);
+$secondary-alt-two: rbg(70, 143, 175);
+$secondary-alt-three: rbg(97, 165, 194);
+$tertiary-alt-one: rgb(169, 214, 229);
+//*****Breakpoints*****//
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$max-width-container: 1160px;
+
+/* SCSS RGB */
+$prussian-blue: rgba(1, 42, 74, 1);
+$indigo-dye: rgba(1, 58, 99, 1);
+$indigo-dye-2: rgba(1, 73, 124, 1);
+$indigo-dye-3: rgba(1, 79, 134, 1);
+$ucla-blue: rgba(42, 111, 151, 1);
+$cerulean: rgba(44, 125, 160, 1);
+$air-force-blue: rgba(70, 143, 175, 1);
+$air-superiority-blue: rgba(97, 165, 194, 1);
+$sky-blue: rgba(137, 194, 217, 1);
+$light-blue: rgba(169, 214, 229, 1);

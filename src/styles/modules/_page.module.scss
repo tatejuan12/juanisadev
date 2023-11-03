@@ -1,0 +1,28 @@
+@import "@styles/variables";
+$font-family_1: $font-mono;
+$background-color_1: rgba($callout-rgb, 0.5);
+
+.hero {
+  height: 85vh;
+  &_header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &_avatar {
+    display: flex;
+    justify-content: center;
+    &_container {
+      background-color: $primary-color;
+      width: 100px;
+      height: 100px;
+      border-radius: 500px;
+      overflow: hidden;
+      [data-theme="light"] & {
+        background-color: $tertiary-color;
+      }
+    }
+  }
+}
