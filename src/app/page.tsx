@@ -9,7 +9,7 @@ export default function Home() {
       <div className={styles.hero}>
         <div className={styles.hero_header}>
           <h1>{<TypewriterGreeting />}</h1>
-          <h2>I'm a programmer, problem solver, tinkerer</h2>
+          <h2>I&apos;m a programmer, problem solver, tinkerer</h2>
         </div>
         <div className={styles.hero_avatar}>
           <div className={styles.hero_avatar_container}>
