@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="150mm"
+   height="150mm"
+   viewBox="0 0 150 150"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+   sodipodi:docname="JT-logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.4185983"
+     inkscape:cx="286.19801"
+     inkscape:cy="279.1488"
+     inkscape:window-width="2560"
+     inkscape:window-height="1351"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d="M 51.963659,150 V 126.50507 H 63.711122 V 44.166999 h 29.421574 v 94.085541 h -5.873731 v 5.87373 H 81.332317 V 150 Z"
+       id="text1"
+       style="font-size:105.833px;font-family:Quadriana;-inkscape-font-specification:Quadriana;stroke-width:0.264583"
+       aria-label="J" />
+    <path
+       d="M 86.615257,82.805359 V 24.015127 H 68.994062 V 0.46728474 H 133.65803 V 24.015127 h -17.6212 v 58.790232 z"
+       id="text2"
+       style="font-size:105.833px;font-family:Quadriana;-inkscape-font-specification:Quadriana;stroke:#5a5a5a;stroke-linejoin:round"
+       transform="scale(0.93457009,1.0700107)"
+       aria-label="T" />
+  </g>
+</svg>

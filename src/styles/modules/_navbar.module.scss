@@ -11,8 +11,61 @@
   margin: 25px 0 0 0;
   background-color: $background-end-rgb;
   // border: thin solid $blood-red;
+  //[data-theme="light"] & {
+  //  background-color: $tertiary-alt-one;
+  //
+  //}
   @include mobile {
     margin: 0 0 25px;
+  }
+  &_collapsible {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    @include mobile {
+      display: flex;
+    }
+    &_menu {
+      position: absolute;
+      display: flex;
+      min-width: 30%;
+      top: 100%;
+      right: 0;
+      flex-direction: column;
+      padding: 20px 30px;
+      border-radius: 20px;
+      gap: 10px;
+      background-color: $primary-alt-one;
+      text-align: end;
+      overflow: hidden;
+
+      &_icons {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        gap: 10px;
+
+        & > * {
+          display: flex;
+          height: 40px;
+          width: 40px;
+          border-radius: 50px;
+          background-color: $primary-color;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          & > * {
+            height: 30px;
+            width: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+    }
   }
   &_logo {
     padding-left: 10px;
@@ -21,17 +74,47 @@
     justify-content: center;
     color: $tertiary-color;
   }
+
   &_rightbar {
     display: flex;
     padding-right: 10px;
     gap: 10px;
     color: $tertiary-color;
-    & > * {
+
+
+    &_hamburger_menu {
+      content: "wow";
+
+      &_button {
+        content: "that";
+      }
+    }
+
+    &_pagelinks {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      margin-right: 30px;
+      @include mobile {
+        display: none;
+      }
+
+      &_pagelink {
+        text-transform: capitalize;
+        background-color: $primary-color;
+        border-radius: 5px;
+        padding: 5px;
+      }
+    }
+
+    & > &_social,
+    & > &_themetoggle {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
       min-width: 25px;
+
       & > * {
         height: 30px;
         width: 30px;
@@ -43,8 +126,14 @@
         cursor: pointer;
       }
     }
+    & > &_social {
+      @include mobile {
+        display: none;
+      }
+    }
     &_themetoggle {
       margin-left: 10px;
+
       &_theme_toggle_button {
         & .dark {
           display: block;

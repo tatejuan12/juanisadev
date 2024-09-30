@@ -3,17 +3,28 @@ $font-family_1: $font-mono;
 $background-color_1: rgba($callout-rgb, 0.5);
 
 .hero {
-  height: 85vh;
+  height: 50vh;
   &_header {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    &_gradient {
+      background: -webkit-linear-gradient($tertiary-color, $secondary-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      &:hover {
+        background: -webkit-linear-gradient($secondary-color, $tertiary-color);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
   }
   &_avatar {
     display: flex;
     justify-content: center;
+    margin-top: 15px;
     &_container {
       background-color: $primary-color;
       width: 100px;

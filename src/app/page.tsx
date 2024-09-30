@@ -8,8 +8,11 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.hero}>
         <div className={styles.hero_header}>
-          <h1>{<TypewriterGreeting />}</h1>
-          <h2>I&apos;m a programmer, problem solver, tinkerer</h2>
+          <h2>{<TypewriterGreeting />}</h2>
+          <h1>
+            Hey there, welcome to a little part of
+            <span className={styles.hero_header_gradient}> MY</span> galaxy!
+          </h1>
         </div>
         <div className={styles.hero_avatar}>
           <div className={styles.hero_avatar_container}>
@@ -17,7 +20,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div style={{ backgroundColor: "red", minHeight: 300 }}> </div>
+      <div className={styles.hero_footer}>
+        <h2>Want to know about my career, or want to know how I can help transform your idea into reality?</h2>
+          <p>Ask Away!</p>
+      </div>
     </main>
   );
 }

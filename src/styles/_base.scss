@@ -40,17 +40,18 @@ a {
 }
 h1 {
   font-family: "Stepalange";
-  text-align: center;
-  font-size: 25px;
-}
-h2 {
-  font-family: "Stepalange";
   font-size: 50px;
 
   text-align: center;
   @include mobile {
     font-size: 35px;
   }
+}
+h2 {
+  font-family: "Stepalange";
+  text-align: center;
+  font-size: 25px;
+
 }
 .Typewriter {
   min-height: 66px;
