@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import styles from "@styles/modules/_page.module.scss";
 import useJuanGPT from "@components/JuanGPT/useJuanGPT";
-import PromptForm from '@components/JuanGPT/PromptForm';
+import PromptForm from "@components/JuanGPT/PromptForm";
 import Thread from "@components/JuanGPT/Thread";
 
 
@@ -45,7 +45,7 @@ const JuanGPT: React.FC = () => {
             </h2>
             <p className={styles.gpt_info}>
                 Ask this AI anything about my career, skills or experience. Or, if you are
-                wondering how and if I can help you, enter details about what you're trying to accomplish!
+                wondering how and if I can help you, enter details about what you&apos;re trying to accomplish!
             </p>
             <p className={styles.gpt_subheader}>Ask Away!</p>
             <Thread thread={thread} currentPrompt={currentPrompt} isLoading={loading} />
