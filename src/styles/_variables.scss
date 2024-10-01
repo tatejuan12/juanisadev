@@ -24,6 +24,7 @@ $secondary-alt-one: rgb(44, 125, 160);
 $secondary-alt-two: rgb(70, 143, 175);
 $secondary-alt-three: rgb(97, 165, 194);
 $tertiary-alt-one: rgb(169, 214, 229);
+$tertiary-alt-two: lighten($tertiary-alt-one, 16%);
 //*****Breakpoints*****//
 $tablet-width: 768px;
 $desktop-width: 1024px;

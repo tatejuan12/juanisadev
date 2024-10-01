@@ -5,10 +5,10 @@ import { LogoSVG } from "./svgs/logoSVG";
 import { LinkedinSVG } from "./svgs/linkedinSVG";
 import { GithubSVG } from "./svgs/githubSVG";
 import { EmailSVG } from "./svgs/emailSVG";
-import { NavItemSVG } from "./navItemSvg";
-import { NavItemPage } from "./navItemPage";
-import { HamburgerMenu } from "./hamburgerMenu";
-const Navbar = () => {
+import { NavItemSvg } from "./NavItemSvg";
+import { NavItemPage } from "./NavItemPage";
+import { HamburgerMenu } from "./HamburgerMenu";
+const NavBar = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.nav_logo}>
@@ -21,17 +21,17 @@ const Navbar = () => {
             href="about"
           ></NavItemPage>
         </div>
-        <NavItemSVG
+        <NavItemSvg
           svg={<LinkedinSVG />}
           className={styles.nav_rightbar_social}
-          href="https://www.linkedin.com/in/juantate/"
+          href="https://www.linkedin.com/in/juan-tate/"
         />
-        <NavItemSVG
+        <NavItemSvg
           svg={<GithubSVG />}
           className={styles.nav_rightbar_social}
           href="https://github.com/tatejuan12"
         />
-        <NavItemSVG
+        <NavItemSvg
           svg={<EmailSVG />}
           className={styles.nav_rightbar_social}
           href="mailto: tatejuan11@gmail.com"
@@ -47,4 +47,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

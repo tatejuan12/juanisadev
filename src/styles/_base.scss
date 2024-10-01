@@ -1,25 +1,37 @@
+@font-face {
+  font-family: "Stepalange";
+  src: url("/fonts/StepalangeRegular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  -webkit-tap-highlight-color: transparent;
 }
+
 html {
   max-width: 100vw;
   overflow-x: hidden;
+  font-family: "Proxima Nova", serif;
 }
+
 body {
   max-width: 100vw;
   overflow-x: hidden;
   color: $foreground-rgb;
-  background: linear-gradient(to bottom, transparent, $background-end-rgb)
-    $background-start-rgb;
+  background: linear-gradient(to bottom, transparent, $background-end-rgb) $background-start-rgb;
+
   [data-theme="light"] & {
-    background: linear-gradient(to bottom, transparent, $foreground-rgb)
-      $foreground-secondary-rbg;
+    background: linear-gradient(to bottom, transparent, $foreground-rgb) $foreground-secondary-rbg;
     color: $background-start-rgb;
   }
+
   transition: background 0.125s linear;
 }
+
 div.app {
   margin: auto;
   max-width: 1600px;
@@ -30,35 +42,41 @@ div.app {
     width: 95%;
   }
 }
+
 main {
   padding-top: 15vh;
   min-height: 100vh;
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
+
 h1 {
   font-family: "Stepalange";
   font-size: 50px;
 
-  text-align: center;
   @include mobile {
     font-size: 35px;
   }
 }
+
 h2 {
   font-family: "Stepalange";
-  text-align: center;
   font-size: 25px;
 
 }
+
 .Typewriter {
   min-height: 66px;
+
   &__cursor {
     display: none;
   }
+
   &__wrapper {
     line-height: 66px;
   }
 }
+

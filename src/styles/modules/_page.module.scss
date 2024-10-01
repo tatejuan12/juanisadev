@@ -1,19 +1,23 @@
-@import "@styles/variables";
-$font-family_1: $font-mono;
-$background-color_1: rgba($callout-rgb, 0.5);
 
 .hero {
   height: 50vh;
+
+  h1, h2 {
+    text-align: center;
+  }
+
   &_header {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
     &_gradient {
       background: -webkit-linear-gradient($tertiary-color, $secondary-color);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
       &:hover {
         background: -webkit-linear-gradient($secondary-color, $tertiary-color);
         -webkit-background-clip: text;
@@ -21,18 +25,159 @@ $background-color_1: rgba($callout-rgb, 0.5);
       }
     }
   }
+
   &_avatar {
     display: flex;
     justify-content: center;
     margin-top: 15px;
+
     &_container {
       background-color: $primary-color;
       width: 100px;
       height: 100px;
       border-radius: 500px;
       overflow: hidden;
+
       [data-theme="light"] & {
         background-color: $tertiary-color;
+      }
+    }
+  }
+}
+
+.gpt {
+  padding: 50px 12vw;
+  @include tablet{
+    padding: 50px 5vw
+  }
+  background-color: $background-end-rgb;
+  border-radius: 25px;
+
+  [data-theme="light"] & {
+    background-color: $tertiary-color;
+  }
+
+  &_header {
+    margin-bottom: 10px;
+  }
+
+  &_info {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  &_subheader {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &_input {
+    margin: 25px 0 0 0;
+
+    &_prompt {
+      outline: none;
+      padding: 5px 10px;
+      height: 50px;
+      width: 100%;
+      border: 5px solid $callout-rgb;
+      border-radius: 15px;
+      background: $background-start-rgb;
+      font-size: 17px;
+      font-weight: bold;
+      min-height: 100px;
+      resize: vertical;
+
+      &:focus-visible {
+        border-color: lighten($primary-color, 5%);
+      }
+
+      [data-theme="light"] & {
+        background-color: $foreground-rgb;
+        border-color: lighten($tertiary-color, 10%);
+
+        &:focus-visible {
+          border-color: lighten($tertiary-color, 5%);
+        }
+      }
+
+    }
+
+    &_submit {
+      display: block;
+      margin: 10px 0 0 auto;
+      padding: 15px 30px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background-color: $primary-color;
+      font-weight: bold;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: $primary-alt-one;
+      }
+
+      [data-theme="light"] & {
+        background-color: $secondary-color;
+
+        &:hover {
+          background-color: $secondary-alt-two;
+        }
+      }
+    }
+  }
+
+  &_thread {
+    &:empty {
+      display: none;
+    }
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: lighten($background-end-rgb, 1%);
+    [data-theme="light"] & {
+      background-color: darken($tertiary-color, 5%);
+    }
+
+    &_item {
+      margin-bottom: 20px;
+      &:last-of-type {margin-bottom: 0}
+      &_prompt {
+        font-weight: 1000;
+        margin-bottom: 10px;
+      }
+
+      &_response {
+        & p {
+          margin: 5px 0 5px 0;
+        }
+        & hr {
+          margin: 10px 0  10px 0;
+          [data-theme="light"] & {
+            border-color: black;
+          }
+        }
+        & ol {
+          margin: 10px 0 10px 20px;
+          & li {
+            margin: 5px 0 5px 0;
+          }
+        }
+        &_error{
+          color: red;
+          font-weight: 600;
+        }
+      }
+    }
+
+    &_skeleton {
+      &_item {
+        --highlight-color: #{lighten($background-end-rgb, 10%)} !important;
+
+        [data-theme="light"] & {
+          --highlight-color: #{darken($tertiary-color, 10%)} !important;
+        }
       }
     }
   }

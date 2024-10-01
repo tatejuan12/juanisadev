@@ -1,6 +1,6 @@
 // Mixins
 @mixin tablet {
-  @media (min-width: #{$tablet-width}) {
+  @media (max-width: #{$desktop-width}) {
     @content;
   }
 }

@@ -3,8 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import { useSpring, animated } from "react-spring";
 import Hamburger from "hamburger-react";
 import styles from "@styles/modules/_navbar.module.scss";
-import { NavItemPage } from "@components/navigation/navItemPage";
-import { NavItemSVG } from "@components/navigation/navItemSvg";
+import { NavItemPage } from "@components/navigation/NavItemPage";
+import { NavItemSvg } from "@components/navigation/NavItemSvg";
 import { LinkedinSVG } from "@components/navigation/svgs/linkedinSVG";
 import { GithubSVG } from "@components/navigation/svgs/githubSVG";
 import { EmailSVG } from "@components/navigation/svgs/emailSVG";
@@ -56,17 +56,17 @@ export const HamburgerMenu = () => {
                 />
 
                 <div className={styles.nav_collapsible_menu_icons}>
-                    <NavItemSVG
+                    <NavItemSvg
                         svg={<LinkedinSVG />}
                         className={styles.nav_rightbar_social}
-                        href="https://www.linkedin.com/in/juantate/"
+                        href="https://www.linkedin.com/in/juan-tate/"
                     />
-                    <NavItemSVG
+                    <NavItemSvg
                         svg={<GithubSVG />}
                         className={styles.nav_rightbar_social}
                         href="https://github.com/tatejuan12"
                     />
-                    <NavItemSVG
+                    <NavItemSvg
                         svg={<EmailSVG />}
                         className={styles.nav_rightbar_social}
                         href="mailto: tatejuan11@gmail.com"

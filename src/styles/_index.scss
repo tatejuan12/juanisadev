@@ -4,6 +4,7 @@
   font-weight: normal;
   font-style: normal;
 }
-@import "mixins";
-@import "variables";
-@import "base";
+
+@import "@styles/_variables";
+@import "@styles/_mixins";
+@import "@styles/_base";

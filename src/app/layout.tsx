@@ -1,7 +1,7 @@
+import "@styles/_index.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@styles/index.scss";
-import Navbar from "@components/navigation/navBar";
+import NavBar from "@components/navigation/NavBar";
 import { Providers } from "@app/providers";
 import { Skeletons } from "@components/themeButton/skeletonTheme";
 
@@ -23,7 +23,7 @@ export default function RootLayout({
         <div className={"app"}>
           <Providers>
             <Skeletons>
-              <Navbar />
+              <NavBar />
               {children}
             </Skeletons>
           </Providers>
