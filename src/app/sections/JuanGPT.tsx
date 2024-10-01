@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import styles from "@styles/modules/_page.module.scss";
-import useJuanGPT from "@components/JuanGPT/hooks";
+import useJuanGPT from "@components/JuanGPT/useJuanGPT";
 import PromptForm from '@components/JuanGPT/PromptForm';
 import Thread from "@components/JuanGPT/Thread";
 

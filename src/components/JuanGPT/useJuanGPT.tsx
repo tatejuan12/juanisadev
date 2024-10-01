@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const hooks = () => {
+const useJuanGPT = () => {
     const [prompt, setPrompt] = useState("");
     const [response, setResponse] = useState("");
     const [loading, setLoading] = useState(false);
@@ -44,4 +44,4 @@ const hooks = () => {
     };
 };
 
-export default hooks;
+export default useJuanGPT;
