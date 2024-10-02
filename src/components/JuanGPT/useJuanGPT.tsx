@@ -8,6 +8,12 @@ const useJuanGPT = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (prompt.trim() === "") {
+            alert("Please enter a prompt.");
+            return;
+        }
+
         setLoading(true);
         setError(null);
 
@@ -21,14 +27,24 @@ const useJuanGPT = () => {
             });
 
             if (!res.ok) {
-                throw new Error('Failed to fetch response');
+                if (res.status === 404) {
+                    throw new Error('API endpoint not found.');
+                } else {
+                    throw new Error('Failed to fetch response.');
+                }
             }
 
             const data = await res.json();
             setResponse(data.data.prompt);
         } catch (error) {
             console.error('Error:', error);
-            setError('An error occurred while fetching the response.');
+            if (error instanceof Error && error.message.includes('404')) {
+                setError('API endpoint not found.');
+            } else if (error instanceof TypeError) {
+                setError('Network error. Please check your connection.');
+            } else {
+                setError('An unexpected error occurred.');
+            }
         } finally {
             setLoading(false);
         }
