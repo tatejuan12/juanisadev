@@ -3,8 +3,8 @@ import Typewriter from "typewriter-effect";
 import ampm from "./CurrentHour";
 
 export const TypewriterGreeting = () => {
-  var phrases;
-  if (ampm() === "am") {
+    let phrases;
+    if (ampm() === "am") {
     phrases = [
       "Good morning",
       "Bom dia",
