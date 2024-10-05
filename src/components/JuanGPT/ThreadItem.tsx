@@ -9,13 +9,13 @@ interface ThreadItemProps {
     isError?: boolean;
 }
 
-const ThreadItem: React.FC<ThreadItemProps> = ({ prompt, response, isError }) => {
+const ThreadItem: React.FC<ThreadItemProps> = ({prompt, response, isError}) => {
     const typewriterText = useTypewriter(typeof response === 'string' ? response : '', 1);
-
     return (
         <div className={styles.gpt_thread_item}>
             <div className={styles.gpt_thread_item_prompt}>{prompt}</div>
-            <div className={`${styles.gpt_thread_item_response} ${isError ? styles.gpt_thread_item_response_error : ''}`}>
+            <div
+                className={`${styles.gpt_thread_item_response} ${isError ? styles.gpt_thread_item_response_error : ''}`}>
                 {typeof response === 'string' ? (
                     <ReactMarkdown>{typewriterText}</ReactMarkdown>
                 ) : (

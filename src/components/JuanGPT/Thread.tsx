@@ -13,13 +13,13 @@ interface ThreadProps {
     isLoading: boolean;
 }
 
-const Thread: React.FC<ThreadProps> = ({ thread, currentPrompt, isLoading }) => (
-    <div className={styles.gpt_thread}>
+const Thread: React.FC<ThreadProps> = ({thread, currentPrompt, isLoading}) => (
+    <div className={styles.gpt_thread} key={thread.length}>
         {thread.map((item, index) => (
             <ThreadItem key={index} {...item} />
         ))}
         {isLoading && (
-            <ThreadItem prompt={currentPrompt} response={<Loading />} />
+            <ThreadItem prompt={currentPrompt} response={<Loading/>}/>
         )}
     </div>
 );
