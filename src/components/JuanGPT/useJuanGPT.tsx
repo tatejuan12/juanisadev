@@ -1,10 +1,13 @@
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
+import useSessionStorage from "@contexts/useSessionStorage";
 
 const useJuanGPT = () => {
     const [prompt, setPrompt] = useState('');
     const [response, setResponse] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [threadId, setThreadId] = useSessionStorage("threadId");
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -15,14 +18,18 @@ const useJuanGPT = () => {
 
         setLoading(true);
         setError(null);
-
+        // setThreadId("thread_1UTfZK3C90a1zJQAeex4TNm7");
+        const sendData: any = {
+            prompt: prompt,
+            threadId: threadId
+        }
         try {
             const res = await fetch('/api/juangpt', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({prompt}),
+                body: JSON.stringify(sendData),
             });
 
             if (!res.ok) {
@@ -39,6 +46,7 @@ const useJuanGPT = () => {
 
             const data = await res.json();
             setResponse(data.data.prompt);
+            if (threadId == "") setThreadId(data.data.threadId);
         } catch (error) {
             // More specific error handling if needed, but now we're not catching locally thrown errors.
             console.error('Error during fetch:', error);
@@ -47,6 +55,12 @@ const useJuanGPT = () => {
             setLoading(false);
         }
     };
+    const clearThread = useCallback(() => {
+        setThreadId("");
+        setResponse("");
+        setError(null);
+    }, [setThreadId]);
+
 
     return {
         prompt,
@@ -55,6 +69,7 @@ const useJuanGPT = () => {
         loading,
         error,
         handleSubmit,
+        clearThread: clearThread,
     };
 };
 

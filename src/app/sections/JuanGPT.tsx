@@ -1,16 +1,16 @@
-"use client"
-
-import React, { useState, useEffect, useCallback } from "react";
+"use client";
+import React, {useState, useEffect, useCallback} from "react";
 import styles from "@styles/modules/_page.module.scss";
 import useJuanGPT from "@components/JuanGPT/useJuanGPT";
 import PromptForm from "@components/JuanGPT/PromptForm";
 import Thread from "@components/JuanGPT/Thread";
-
+import useSessionStorage from "@contexts/useSessionStorage";
 
 const JuanGPT: React.FC = () => {
-    const { prompt, setPrompt, response, loading, error, handleSubmit } = useJuanGPT();
+    const {prompt, setPrompt, response, loading, error, handleSubmit, clearThread} = useJuanGPT();
     const [thread, setThread] = useState<Array<{ prompt: string; response: string; isError: boolean }>>([]);
     const [currentPrompt, setCurrentPrompt] = useState("");
+    const [threadId, setThreadId] = useSessionStorage("threadId");
 
     const updateThread = useCallback(() => {
         if (!loading && (response || error)) {
@@ -27,16 +27,30 @@ const JuanGPT: React.FC = () => {
 
     useEffect(() => {
         updateThread();
-    }, [updateThread]);
+        console.log(thread);
+    }, [updateThread, thread]);
 
     const handleThreadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!prompt.trim()) return;
-
         setCurrentPrompt(prompt);
         setPrompt("");
         await handleSubmit(e);
     };
+
+    const handleNewThread = useCallback(() => {
+        setThread([]);
+        setCurrentPrompt("");
+        setPrompt("");
+        clearThread();
+    }, [clearThread, setPrompt]);
+
+    // Effect to clear the thread when threadId is empty
+    useEffect(() => {
+        if (!threadId) {
+            setThread([]);
+        }
+    }, [threadId]);
 
     return (
         <div className={styles.gpt}>
@@ -48,12 +62,13 @@ const JuanGPT: React.FC = () => {
                 wondering how and if I can help you, enter details about what you&apos;re trying to accomplish!
             </p>
             <p className={styles.gpt_subheader}>Ask Away!</p>
-            <Thread thread={thread} currentPrompt={currentPrompt} isLoading={loading} />
+            <Thread thread={thread} currentPrompt={currentPrompt} isLoading={loading}/>
             <PromptForm
                 onSubmit={handleThreadSubmit}
                 isLoading={loading}
                 prompt={prompt}
                 setPrompt={setPrompt}
+                onNewThread={handleNewThread}
             />
         </div>
     );
