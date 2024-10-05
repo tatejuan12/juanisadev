@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "@styles/modules/_page.module.scss";
 import ThreadItem from './ThreadItem';
 import Loading from "@components/JuanGPT/Loading";
@@ -15,8 +15,14 @@ interface ThreadProps {
 }
 
 const Thread: React.FC<ThreadProps> = ({thread, currentPrompt, isLoading}) => {
+    const [typewriterText, setTypewriterText] = useState('');
     const latestResponse = thread[thread.length - 1]?.response || '';
-    const typewriterText = useTypewriter(latestResponse, 1);
+
+    useEffect(() => {
+        setTypewriterText('');
+    }, [latestResponse]);
+
+    useTypewriter(latestResponse, 1, setTypewriterText);
 
     return (
         <div className={styles.gpt_thread} key={thread.length}>
