@@ -13,22 +13,28 @@ const JuanGPT: React.FC = () => {
     const [threadId, setThreadId] = useSessionStorage("threadId");
 
     const updateThread = useCallback(() => {
-        if (!loading && (response || error)) {
-            setThread(prevThread => [
-                ...prevThread,
-                {
-                    prompt: currentPrompt,
-                    response: error ? `Error: ${error}` : response,
-                    isError: !!error
+        if (!loading && (response || error) && currentPrompt) {
+            setThread(prevThread => {
+                const lastItem = prevThread[prevThread.length - 1];
+                if (lastItem && lastItem.prompt === currentPrompt) {
+                    return prevThread; // Don't add if it's the same as the last item
                 }
-            ]);
+                return [
+                    ...prevThread,
+                    {
+                        prompt: currentPrompt,
+                        response: error ? `Error: ${error}` : response,
+                        isError: !!error
+                    }
+                ];
+            });
+            setCurrentPrompt(""); // Clear current prompt after adding to thread
         }
     }, [loading, response, error, currentPrompt]);
 
     useEffect(() => {
         updateThread();
-        console.log(thread);
-    }, [updateThread, thread]);
+    }, [updateThread]);
 
     const handleThreadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
