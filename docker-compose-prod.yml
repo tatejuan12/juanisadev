@@ -1,6 +1,6 @@
 services:
   next-app:
-    container_name: next-app
+    container_name: juanisadev
     build:
       context: .
       dockerfile: prod.Dockerfile
