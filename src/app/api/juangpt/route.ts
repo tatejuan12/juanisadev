@@ -8,7 +8,7 @@ const openai = new OpenAI();
 
 export async function POST(request: NextRequest) {
     let data;
-    let run
+    let run;
     try {
         data = await request.json();
         console.log("data")
@@ -18,12 +18,11 @@ export async function POST(request: NextRequest) {
     }
     if (data.hasOwnProperty("prompt")) {
         if (data.prompt == "wow") throw Error;
-        await new Promise(resolve => setTimeout(resolve, 3000));
         if (data.hasOwnProperty("threadId") && data.threadId == "") {
             run = await createThreadAndRunStreamPromise(data.prompt);
         } else run = await createRunStreamPromise(data.prompt, data.threadId);
         console.log("run")
-        console.log(run)
+        console.log(run);
         const message = await getThreadMessages(run.threadId);
         return NextResponse.json({
             status: 'success', data: {
