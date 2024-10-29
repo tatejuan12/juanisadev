@@ -2,13 +2,12 @@
 import {NextRequest, NextResponse} from 'next/server';
 import OpenAI from "openai";
 import process from "process";
-import {APIPromise} from "openai/core";
 
 const openai = new OpenAI();
 
 export async function POST(request: NextRequest) {
-    let data;
-    let run;
+    let data: { threadId: string; prompt: string; };
+    let run: { threadId: string; };
     try {
         data = await request.json();
         console.log("data")
@@ -17,7 +16,6 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({status: 'error', message: 'Invalid JSON'})
     }
     if (data.hasOwnProperty("prompt")) {
-        if (data.prompt == "wow") throw Error;
         if (data.hasOwnProperty("threadId") && data.threadId == "") {
             run = await createThreadAndRunStreamPromise(data.prompt);
         } else run = await createRunStreamPromise(data.prompt, data.threadId);
@@ -105,14 +103,19 @@ async function getThreadMessages(threadId: string): Promise<any> {
             );
             const assistantMessage = threadMessages.data.filter(message => message.role === 'assistant')
                 .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
-
             if (!assistantMessage) reject(new NoAssistantMessageError());
-            if (assistantMessage.content[0].type == 'text') resolve(assistantMessage.content[0].text.value);
-            else reject(new NoAssistantMessageError());
+            const textMessage = getTextFromMessage(assistantMessage);
+            if (!textMessage || !textMessage.text) reject(new NoTextMessageError());
+            resolve(textMessage.text.value)
         } catch (error) {
             reject(error);
         }
     });
+
+    function getTextFromMessage(assistantMessage: any): any | undefined {
+
+        return assistantMessage.content.find(c => c.type === 'text');
+    }
 }
 
 async function getRun(threadId: string, runId: string): Promise<any> {
@@ -150,5 +153,11 @@ class RunError extends Error {
 class NoAssistantMessageError extends Error {
     constructor() {
         super('No assistant message found');
+    }
+}
+
+class NoTextMessageError extends Error {
+    constructor() {
+        super('Assistant Message did not have a text message');
     }
 }
