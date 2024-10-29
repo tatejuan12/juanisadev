@@ -99,15 +99,19 @@ async function createRunStreamPromise(prompt: string, threadId: string): Promise
 
 async function getThreadMessages(threadId: string): Promise<any> {
     return new Promise(async (resolve, reject) => {
-        const threadMessages = await openai.beta.threads.messages.list(
-            threadId
-        );
-        const assistantMessage = threadMessages.data.filter(message => message.role === 'assistant')
-            .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
+        try {
+            const threadMessages = await openai.beta.threads.messages.list(
+                threadId
+            );
+            const assistantMessage = threadMessages.data.filter(message => message.role === 'assistant')
+                .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
 
-        if (!assistantMessage) reject(new NoAssistantMessageError());
-        if (assistantMessage.content[0].type == 'text') resolve(assistantMessage.content[0].text.value);
-        else reject(new NoAssistantMessageError());
+            if (!assistantMessage) reject(new NoAssistantMessageError());
+            if (assistantMessage.content[0].type == 'text') resolve(assistantMessage.content[0].text.value);
+            else reject(new NoAssistantMessageError());
+        } catch (error) {
+            reject(error);
+        }
     });
 }
 
