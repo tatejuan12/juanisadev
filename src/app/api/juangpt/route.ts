@@ -53,10 +53,11 @@ async function createThreadAndRunStreamPromise(prompt: string): Promise<any> {
                 stream: true
             })
             for await (const event of stream) {
-                if (event.event === "thread.run.step.completed") if (event.data.status === 'completed') resolve({
-                    "threadId": event.data.thread_id,
-                    "runId": event.data.run_id
-                }); else reject(new RunError());
+                if (event.event === "thread.run.step.completed")
+                    if (event.data.status === 'completed') resolve({
+                        "threadId": event.data.thread_id,
+                        "runId": event.data.run_id
+                    }); else reject(new RunError());
             }
         } catch (error: any) {
             reject(error);
@@ -86,7 +87,8 @@ async function createRunStreamPromise(prompt: string, threadId: string): Promise
 
             for await (const event of stream) {
                 if (event.event === "thread.run.step.completed")
-                    if (event.data.status === 'completed') resolve({"threadId": threadId, "runId": event.data.run_id});
+                    if (event.data.status === 'completed')
+                        resolve({"threadId": threadId, "runId": event.data.run_id});
                     else reject(new RunError());
             }
         } catch (error: any) {
