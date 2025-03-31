@@ -1,7 +1,11 @@
-## animations
+# My Professional Portfolio!
 
-https://www.framer.com/motion/
+## Features
+Currently, it is very simple. I'll be adding a interactable timeline with all my experience/skills (kind of like a interactable resume).
 
-## colour scheme
+The only feature right now is the JuanGPT, which is a LLM trained to answer questions based on my professional experience.
 
-https://coolors.co/0b090a-161a1d-660708-a4161a-ba181b-e5383b-b1a7a6-d3d3d3-f5f3f4-ffffff
+## Setup
+Requires two ENV variables, both of which are set in the `stack.env`file
+- `OPENAI_API_KEY = straight forward innit...`
+- `ASSISTANT_ID = also straight forward innit???`
