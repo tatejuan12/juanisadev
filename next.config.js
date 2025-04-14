@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
 const nextConfig = {
-    output: 'standalone',
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],
         prependData: `@use "@styles/_imports.scss" as *;`

@@ -2,12 +2,13 @@
 import {NextRequest, NextResponse} from 'next/server';
 import OpenAI from "openai";
 import process from "process";
+import {logRun} from "./database";
 
 const openai = new OpenAI();
 
 export async function POST(request: NextRequest) {
     let data: { threadId: string; prompt: string; };
-    let run: { threadId: string; };
+    let run: { threadId: string; runId: string; };
     try {
         data = await request.json();
         console.log("data")
@@ -22,6 +23,7 @@ export async function POST(request: NextRequest) {
         console.log("run")
         console.log(run);
         const message = await getThreadMessages(run.threadId);
+        await logRun(run.threadId, run.runId, data.prompt, message);
         return NextResponse.json({
             status: 'success', data: {
                 prompt: message,
@@ -133,6 +135,7 @@ async function getRun(threadId: string, runId: string): Promise<any> {
         }
     });
 }
+
 
 class NoAssistantIdError extends Error {
     constructor() {

@@ -39,4 +39,5 @@ next-env.d.ts
 .idea
 .aider*
 /.JuanGPT.md
+JuanGPTLogs*
 

@@ -1,14 +1,14 @@
 {
   "name": "juanisadev",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node dbSetup.mts && next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "better-sqlite3": "^11.9.1",
     "framer-motion": "^10.16.4",
     "hamburger-react": "^2.5.0",
     "next": "^14.0.0",
