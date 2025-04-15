@@ -1,11 +1,13 @@
 import Database from 'better-sqlite3';
+import {getDB} from './dbSetup.mjs';
 
-const db = new Database('JuanGPTLogs.db');
+const db = getDB()
 db.pragma('journal_mode = WAL');
 
 const insertThreadStmt = db.prepare(`
     INSERT INTO threads (threadId, timestamp)
-    VALUES (?, ?)  ON CONFLICT(threadId) DO NOTHING
+    VALUES (?, ?)
+    ON CONFLICT(threadId) DO NOTHING
 `);
 
 const insertRunStmt = db.prepare(`

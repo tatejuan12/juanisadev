@@ -7,6 +7,7 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+COPY logs ./logs
 # Omit --production flag for TypeScript devDependencies
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
@@ -22,9 +23,9 @@ COPY next.config.js .
 COPY tsconfig.json .
 
 # Environment variables must be present at build time
-ENV NODE_ENV production
 ENV OPENAI_API_KEY=$OPENAI_API_KEY
 ENV ASSISTANT_ID=$ASSISTANT_ID
+ENV LOGS_PATH=$LOGS_PATH
 
 # Next.js collects completely anonymous telemetry data about general usage. Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line to disable telemetry at build time
@@ -51,6 +52,7 @@ RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
 COPY --from=builder /app/public ./public
+COPY --from=builder /app/logs ./logs
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
@@ -58,9 +60,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # Environment variables must be present at build time
-ENV NODE_ENV production
 ENV OPENAI_API_KEY=$OPENAI_API_KEY
 ENV ASSISTANT_ID=$ASSISTANT_ID
+ENV LOGS_PATH=$LOGS_PATH
 
 # Uncomment the following line to disable telemetry at run time
 ENV NEXT_TELEMETRY_DISABLED 1

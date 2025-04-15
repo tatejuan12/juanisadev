@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
         console.log("run")
         console.log(run);
         const message = await getThreadMessages(run.threadId);
-        await logRun(run.threadId, run.runId, data.prompt, message);
+        logRun(run.threadId, run.runId, data.prompt, message);
         return NextResponse.json({
             status: 'success', data: {
                 prompt: message,

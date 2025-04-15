@@ -7,11 +7,14 @@ services:
       args:
         - OPENAI_API_KEY=${OPENAI_API_KEY}
         - ASSISTANT_ID=${ASSISTANT_ID}
+        - LOGS_PATH=${LOGS_PATH}
     env_file:
       - stack.env
     restart: always
     ports:
       - "3000:3000"
+    volumes:
+      - ${LOGS_PATH}:/app/logs
     networks:
       - my_network
 
