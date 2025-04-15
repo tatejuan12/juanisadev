@@ -7,7 +7,6 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-COPY logs ./logs
 # Omit --production flag for TypeScript devDependencies
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
@@ -21,6 +20,7 @@ COPY src ./src
 COPY public ./public
 COPY next.config.js .
 COPY tsconfig.json .
+RUN mkdir -p ./logs
 
 # Environment variables must be present at build time
 ENV OPENAI_API_KEY=$OPENAI_API_KEY
