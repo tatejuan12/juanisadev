@@ -2,9 +2,9 @@
   "name": "juanisadev",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--no-network-family-autoselection' next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_OPTIONS='--no-network-family-autoselection' next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "hamburger-react": "^2.5.0",
     "next": "^14.0.0",
     "next-themes": "^0.2.1",
+    "node-telegram-bot-api": "^0.66.0",
     "openai": "^4.67.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
+    "@types/node-telegram-bot-api": "^0.64.8",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",

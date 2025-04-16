@@ -26,7 +26,8 @@ RUN mkdir -p ./logs
 ENV OPENAI_API_KEY=$OPENAI_API_KEY
 ENV ASSISTANT_ID=$ASSISTANT_ID
 ENV LOGS_PATH=$LOGS_PATH
-ENV TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN
+#ENV TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN
+#ENV TELEGRAM_CHAT_ID=$TELEGRAM_CHAT_ID
 
 # Next.js collects completely anonymous telemetry data about general usage. Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line to disable telemetry at build time
@@ -65,6 +66,7 @@ ENV OPENAI_API_KEY=$OPENAI_API_KEY
 ENV ASSISTANT_ID=$ASSISTANT_ID
 ENV LOGS_PATH=$LOGS_PATH
 ENV TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN
+ENV TELEGRAM_CHAT_ID=$TELEGRAM_CHAT_ID
 
 # Uncomment the following line to disable telemetry at run time
 ENV NEXT_TELEMETRY_DISABLED 1

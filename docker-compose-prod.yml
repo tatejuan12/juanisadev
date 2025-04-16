@@ -9,6 +9,7 @@ services:
         - ASSISTANT_ID=${ASSISTANT_ID}
         - LOGS_PATH=${LOGS_PATH}
         - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+        - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
     env_file:
       - stack.env
     restart: always

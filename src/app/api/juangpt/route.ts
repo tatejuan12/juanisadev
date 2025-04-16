@@ -3,12 +3,14 @@ import {NextRequest, NextResponse} from 'next/server';
 import OpenAI from "openai";
 import process from "process";
 import {logRun} from "./database";
+import sendTelegramNotification from "./telegramNotifier";
 
 const openai = new OpenAI();
 
 export async function POST(request: NextRequest) {
     let data: { threadId: string; prompt: string; };
     let run: { threadId: string; runId: string; };
+
     try {
         data = await request.json();
         console.log("data")
@@ -16,14 +18,17 @@ export async function POST(request: NextRequest) {
     } catch (e) {
         return NextResponse.json({status: 'error', message: 'Invalid JSON'})
     }
+
     if (data.hasOwnProperty("prompt")) {
         if (data.hasOwnProperty("threadId") && data.threadId == "") {
             run = await createThreadAndRunStreamPromise(data.prompt);
         } else run = await createRunStreamPromise(data.prompt, data.threadId);
-        console.log("run")
-        console.log(run);
+
         const message = await getThreadMessages(run.threadId);
+
         logRun(run.threadId, run.runId, data.prompt, message);
+        sendTelegramNotification(data.prompt, message)
+
         return NextResponse.json({
             status: 'success', data: {
                 prompt: message,
