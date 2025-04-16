@@ -122,21 +122,6 @@ async function getThreadMessages(threadId: string): Promise<any> {
     }
 }
 
-// async function getRun(threadId: string, runId: string): Promise<any> {
-//     const assistantId = process.env.ASSISTANT_ID;
-//     if (!assistantId) throw new NoAssistantIdError();
-//
-//     return new Promise(async (resolve, reject) => {
-//         try {
-//             const run = await openai.beta.threads.runs.retrieve(threadId, runId);
-//             resolve(run);
-//         } catch (error: any) {
-//             reject(error.message);
-//         }
-//     });
-// }
-
-
 class NoAssistantIdError extends Error {
     constructor() {
         super('ASSISTANT_ID is not set');
