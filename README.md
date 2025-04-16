@@ -15,3 +15,4 @@ Requires two ENV variables, both of which are set in the `stack.env`file
 - `OPENAI_API_KEY = straight forward innit...`
 - `ASSISTANT_ID = also straight forward innit???`
 - `LOGS_PATH = path where you want the JuanGPT logs to reside in.`
+- `TELEGRAM_BOT_TOKEN = token for your telegram bot which notifies on prompt`
