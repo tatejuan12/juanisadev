@@ -1,0 +1,224 @@
+{
+  "jobs": [
+    {
+      "name": "DataAnnotation (Contract)",
+      "image": "DataAnnotation (Contract).svg",
+      "position": "Coding AI Trainer",
+      "startDate": "Mar 2024",
+      "endDate": "To Date",
+      "details": [
+        "Contributed to the enhancement of LLMs by generating, evaluating, and refining code across diverse programming languages.",
+        "Enhanced AI-assisted coding practices by leveraging experience in AI training, enabling efficient utilisation of AI tools and a deeper understanding of their capabilities."
+      ]
+    },
+    {
+      "name": "Cosmos Capital Management",
+      "image": "Cosmos Capital Management.webp",
+      "position": "Full Stack Developer",
+      "startDate": "Jul 2022",
+      "endDate": "Jan 2024",
+      "details": [
+        "Architected a serverless driver matching algorithm from the ground up using AWS (Lambda & Python, API Gateway, DocumentDB).",
+        "Revised algorithms performance and introduced GeoJSON native geospatial queries and code refining to reduce time/performance cost.",
+        "Solo developed an NFT Marketplace WebApp. The backend and frontend development used Node.js/Express, ensuring scalability and responsiveness. Communicated with XRPLedger using Xaman wallet.",
+        "Designed and optimised a MongoDB data model for an NFT Marketplace, supporting diverse and complex data relationships.",
+        "Developed e-commerce stores on Shopify, Webflow and Wix, ensuring backend and frontend cohesion.",
+        "Translated Figma designs into frontend code, be it with full HTML, or React.",
+        "Translated countless business requirements into software solutions, like custom tailoring Monday CRM/ERM for internal use.",
+        "Learned to leverage chatbots (GH Copilot, Gemini) on coding projects, while still maintaining coding best practices and standards.",
+        "Continuously improved autonomy by working in a Startup environment."
+      ]
+    },
+    {
+      "name": "Cosmos Capital Management",
+      "image": "Cosmos Capital Management.webp",
+      "position": "Front End Developer",
+      "startDate": "Dec 2021",
+      "endDate": "Jul 2022",
+      "details": [
+        "Began career as a Front-End Developer. Designed and implemented custom themes, collaborated with marketing teams to optimise website designs for conversion and user engagement. Translated UI/UX design prototypes into responsive and interactive code, ensuring design fidelity. Transitioned to a Full-Stack role due to business needs."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "name": "RMIT",
+      "image": "RMIT.webp",
+      "position": "Bachelor of IT",
+      "startDate": "Mar 2019",
+      "endDate": "Jun 2022",
+      "details": [
+        "Studied Information Technology, with a focus on Software Engineering and Data Science."
+      ]
+    },
+    {
+      "name": "International Baccalaureate",
+      "image": "IB.webp",
+      "position": "High School Diploma",
+      "startDate": "Feb 2016",
+      "endDate": "Jun 2018",
+      "details": [
+        "During high school, my last two years were spent in the IB program, a rigorous international curriculum that developed my critical thinking, research skills, and global perspective.",
+        "English HL",
+        "Physics HL",
+        "Math SL"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "items": [
+        {
+          "name": "Python"
+        },
+        {
+          "name": "JavaScript"
+        },
+        {
+          "name": "TypeScript"
+        },
+        {
+          "name": "Java"
+        },
+        {
+          "name": "HTML5/CSS"
+        }
+      ]
+    },
+    {
+      "name": "Frameworks & Libraries",
+      "items": [
+        {
+          "name": "Node.js"
+        },
+        {
+          "name": "React"
+        },
+        {
+          "name": "Next.js"
+        },
+        {
+          "name": "Express.js"
+        },
+        {
+          "name": "Angular (familiar)"
+        }
+      ]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "items": [
+        {
+          "name": "AWS (Lambda, DocumentDB, API Gateway)"
+        },
+        {
+          "name": "Docker"
+        },
+        {
+          "name": "CI/CD"
+        },
+        {
+          "name": "Serverless Architecture"
+        },
+        {
+          "name": "UNIX/Linux"
+        }
+      ]
+    },
+    {
+      "name": "Databases",
+      "items": [
+        {
+          "name": "NoSQL (MongoDB, DocumentDB)"
+        },
+        {
+          "name": "GraphQL"
+        },
+        {
+          "name": "Database Design"
+        }
+      ]
+    },
+    {
+      "name": "AI & Machine Learning",
+      "items": [
+        {
+          "name": "AI/ML Model Training & Evaluation"
+        },
+        {
+          "name": "Prompt Engineering"
+        },
+        {
+          "name": "AI Workflow Automation"
+        },
+        {
+          "name": "LLMs (GPT-3/4)"
+        },
+        {
+          "name": "AI Agent Frameworks (LangChain)"
+        }
+      ]
+    },
+    {
+      "name": "Developer Tools & Practices",
+      "items": [
+        {
+          "name": "Git"
+        },
+        {
+          "name": "API Design & Integration"
+        },
+        {
+          "name": "Agile/Scrum"
+        },
+        {
+          "name": "OOP & MVC Principles"
+        },
+        {
+          "name": "Testing & Debugging"
+        }
+      ]
+    },
+    {
+      "name": "No-Code/Low-Code",
+      "items": [
+        {
+          "name": "Wix (Velo)"
+        },
+        {
+          "name": "Webflow"
+        },
+        {
+          "name": "Shopify (Liquid)"
+        },
+        {
+          "name": "Zapier"
+        },
+        {
+          "name": "Notion AI"
+        }
+      ]
+    },
+    {
+      "name": "Soft Skills",
+      "items": [
+        {
+          "name": "Problem Solving"
+        },
+        {
+          "name": "Collaboration & Communication"
+        },
+        {
+          "name": "Autonomy & Ownership"
+        },
+        {
+          "name": "Adaptability & Fast Learner"
+        },
+        {
+          "name": "Strategic Thinking"
+        }
+      ]
+    }
+  ]
+}

@@ -1,34 +1,33 @@
-import "@styles/_index.scss";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
 import NavBar from "@components/navigation/NavBar";
-import { Providers } from "@app/providers";
-import { Skeletons } from "@components/themeButton/skeletonTheme";
+import {Providers} from "@app/providers";
+import {Skeletons} from "@components/themeButton/skeletonTheme";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
-  title: "Juan Tate",
-  description: "Juan Tate's online portfolio",
+    title: "Home | Juan Tate",
+    description: "Juan Tate's (Full Stack Developer) portfolio website.",
 };
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
+                                       children,
+                                   }: {
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" suppressHydrationWarning={true}>
-      <body className={inter.className}>
+    return (
+        <html lang="en" suppressHydrationWarning={true}>
+        <body className={inter.className}>
         <div className={"app"}>
-          <Providers>
-            <Skeletons>
-              <NavBar />
-              {children}
-            </Skeletons>
-          </Providers>
+            <Providers>
+                <Skeletons>
+                    <NavBar/>
+                    {children}
+                </Skeletons>
+            </Providers>
         </div>
-      </body>
-    </html>
-  );
+        </body>
+        </html>
+    );
 }

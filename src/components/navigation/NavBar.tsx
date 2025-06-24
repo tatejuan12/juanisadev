@@ -1,6 +1,5 @@
 import styles from "@styles/modules/_navbar.module.scss";
 import ThemeToggleButton from "@components/themeButton/themeToggleButton";
-import {useState} from "react";
 import {LogoSVG} from "./svgs/logoSVG";
 import {LinkedinSVG} from "./svgs/linkedinSVG";
 import {GithubSVG} from "./svgs/githubSVG";

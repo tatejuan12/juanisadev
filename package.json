@@ -2,7 +2,7 @@
   "name": "juanisadev",
   "version": "0.1.0",
   "scripts": {
-    "dev": "NODE_OPTIONS='--no-network-family-autoselection' next dev",
+    "dev": "NODE_OPTIONS='--no-network-family-autoselection' next dev --turbopack",
     "build": "next build",
     "start": "NODE_OPTIONS='--no-network-family-autoselection' next start",
     "lint": "next lint"
@@ -11,12 +11,12 @@
     "better-sqlite3": "^11.9.1",
     "framer-motion": "^10.16.4",
     "hamburger-react": "^2.5.0",
-    "next": "^14.0.0",
+    "next": "^15.3.1",
     "next-themes": "^0.2.1",
     "node-telegram-bot-api": "^0.66.0",
     "openai": "^4.67.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-loading-skeleton": "^3.5.0",
     "react-markdown": "^9.0.1",
     "react-spring": "^9.7.4",
@@ -29,7 +29,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "^14.0.0",
+    "eslint-config-next": "^15.3.1",
     "sass": "^1.69.4",
     "typescript": "^5"
   }

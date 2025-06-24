@@ -4,7 +4,7 @@ const nextConfig = {
     output: "standalone",
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],
-        prependData: `@use "@styles/_imports.scss" as *;`
+        // prependData: `@use "@styles/_imports.scss" as *;`
     },
     experimental: {
         serverActions: {

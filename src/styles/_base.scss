@@ -1,3 +1,6 @@
+@use "@styles/variables" as *;
+@use "@styles/mixins" as *;
+
 @font-face {
   font-family: "Stepalange";
   src: url("/fonts/StepalangeRegular.woff2") format("woff2");
@@ -46,6 +49,14 @@ div.app {
 main {
   padding-top: 15vh;
   min-height: 100vh;
+
+  & > * {
+    margin-bottom: 50px;
+    padding: 50px 12vw;
+    @include tablet {
+      padding: 50px 5vw
+    }
+  }
 }
 
 a {
@@ -56,6 +67,7 @@ a {
 h1 {
   font-family: "Stepalange";
   font-size: 50px;
+  //margin-bottom: 30px;
 
   @include mobile {
     font-size: 35px;
@@ -64,8 +76,15 @@ h1 {
 
 h2 {
   font-family: "Stepalange";
-  font-size: 25px;
+  font-size: 30px;
+  margin-bottom: 30px;
 
+}
+
+h3 {
+  font-family: "Stepalange";
+  font-size: 25px;
+  margin-bottom: 15px;
 }
 
 .Typewriter {

@@ -1,10 +1,12 @@
+@use "sass:color";
+
 //*****Base*****//
 $max-width: 1100px;
 $border-radius: 12px;
 //*****Text*****//
 $font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-  "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-  "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+"Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+"Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 //*****Background Colors*****//
 $foreground-rgb: rgb(245, 243, 244);
 $foreground-secondary-rbg: rgb(211, 211, 211);
@@ -24,7 +26,7 @@ $secondary-alt-one: rgb(44, 125, 160);
 $secondary-alt-two: rgb(70, 143, 175);
 $secondary-alt-three: rgb(97, 165, 194);
 $tertiary-alt-one: rgb(169, 214, 229);
-$tertiary-alt-two: lighten($tertiary-alt-one, 16%);
+$tertiary-alt-two: color.adjust($tertiary-alt-one, $lightness: 16%);
 //*****Breakpoints*****//
 $tablet-width: 768px;
 $desktop-width: 1024px;
