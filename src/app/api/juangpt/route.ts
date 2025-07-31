@@ -21,8 +21,8 @@ export async function POST(request: NextRequest) {
 
     if (data.hasOwnProperty("prompt")) {
         if (data.hasOwnProperty("threadId") && data.threadId == "") {
-            run = await createThreadAndRunStreamPromise(data.prompt);
-        } else run = await createRunStreamPromise(data.prompt, data.threadId);
+            run = await createThreadAndRun(data.prompt);
+        } else run = await createRun(data.prompt, data.threadId);
 
         const message = await getThreadMessages(run.threadId);
 
@@ -41,90 +41,94 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({status: 'ok'})
 }
 
-async function createThreadAndRunStreamPromise(prompt: string): Promise<any> {
-    const assistantId = process.env.ASSISTANT_ID;
-
-    if (!assistantId) throw new NoAssistantIdError();
-    if (!prompt || prompt == "") throw PromptEmptyError;
-
+async function pollRunStatus(threadId: string, runId: string): Promise<OpenAI.Beta.Threads.Runs.Run> {
     return new Promise(async (resolve, reject) => {
-        try {
-            const stream = await openai.beta.threads.createAndRun({
-                assistant_id: assistantId,
-                thread: {
-                    messages: [{
-                        role: "user",
-                        content: prompt
-                    }]
-                },
-                stream: true
-            })
-            for await (const event of stream) {
-                if (event.event === "thread.run.step.completed")
-                    if (event.data.status === 'completed') resolve({
-                        "threadId": event.data.thread_id,
-                        "runId": event.data.run_id
-                    }); else reject(new RunError());
+        const poll = async () => {
+            try {
+                const run = await openai.beta.threads.runs.retrieve(threadId, runId);
+                if (run.status === 'completed') {
+                    resolve(run);
+                } else if (run.status === 'requires_action') {
+                    // Handle required actions if necessary
+                    reject(new Error("Run requires action, which is not handled."));
+                } else if (run.status === 'failed' || run.status === 'cancelled' || run.status === 'expired') {
+                    reject(new Error(`Run ended with status: ${run.status}`));
+                } else {
+                    setTimeout(poll, 500); // Poll every 500ms
+                }
+            } catch (error) {
+                reject(error);
             }
-        } catch (error: any) {
-            reject(error);
-        }
+        };
+        await poll();
     });
 }
 
-async function createRunStreamPromise(prompt: string, threadId: string): Promise<any> {
+async function createThreadAndRun(prompt: string): Promise<{ threadId: string, runId: string }> {
     const assistantId = process.env.ASSISTANT_ID;
 
     if (!assistantId) throw new NoAssistantIdError();
-    if (!prompt || prompt == "") throw PromptEmptyError;
+    if (!prompt || prompt == "") throw new PromptEmptyError();
 
-    return new Promise(async (resolve, reject) => {
-        try {
-            // Create a message
-            await openai.beta.threads.messages.create(threadId, {
+    const run = await openai.beta.threads.createAndRun({
+        assistant_id: assistantId,
+        thread: {
+            messages: [{
                 role: "user",
                 content: prompt
-            });
-
-            // Create a run
-            const stream = await openai.beta.threads.runs.create(threadId, {
-                assistant_id: assistantId,
-                stream: true
-            });
-
-            for await (const event of stream) {
-                if (event.event === "thread.run.step.completed")
-                    if (event.data.status === 'completed')
-                        resolve({"threadId": threadId, "runId": event.data.run_id});
-                    else reject(new RunError());
-            }
-        } catch (error: any) {
-            reject(error);
-        }
+            }]
+        },
     });
+
+    await pollRunStatus(run.thread_id, run.id);
+
+    return {threadId: run.thread_id, runId: run.id};
 }
 
-async function getThreadMessages(threadId: string): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-        try {
-            const threadMessages = await openai.beta.threads.messages.list(
-                threadId
-            );
-            const assistantMessage = threadMessages.data.filter(message => message.role === 'assistant')
-                .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
-            if (!assistantMessage) reject(new NoAssistantMessageError());
-            const textMessage = getTextFromMessage(assistantMessage);
-            if (!textMessage || !textMessage.text) reject(new NoTextMessageError());
-            resolve(textMessage.text.value)
-        } catch (error) {
-            reject(error);
-        }
+async function createRun(prompt: string, threadId: string): Promise<{ threadId: string, runId: string }> {
+    const assistantId = process.env.ASSISTANT_ID;
+
+    if (!assistantId) throw new NoAssistantIdError();
+    if (!prompt || prompt == "") throw new PromptEmptyError();
+
+    await openai.beta.threads.messages.create(threadId, {
+        role: "user",
+        content: prompt
     });
 
-    function getTextFromMessage(assistantMessage: any): any | undefined {
+    const run = await openai.beta.threads.runs.create(threadId, {
+        assistant_id: assistantId,
+    });
 
-        return assistantMessage.content.find(c => c.type === 'text');
+    await pollRunStatus(run.thread_id, run.id);
+
+    return {threadId: run.thread_id, runId: run.id};
+}
+
+async function getThreadMessages(threadId: string, maxRetries = 5, initialDelay = 400): Promise<string> {
+    for (let attempt = 0; attempt < maxRetries; attempt++) {
+        const threadMessages = await openai.beta.threads.messages.list(threadId, { order: 'desc', limit: 20 });
+
+        const assistantMessage = threadMessages.data.find(m => m.role === 'assistant');
+
+        if (assistantMessage) {
+            const textContent = assistantMessage.content.find(c => c.type === 'text');
+            
+            if (textContent && 'text' in textContent) {
+                const textValue = textContent.text.value;
+                if (textValue) {
+                    return textValue;
+                }
+            }
+        }
+
+        if (attempt < maxRetries - 1) {
+            const delay = initialDelay * Math.pow(2, attempt);
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
     }
+
+    throw new NoAssistantMessageError();
 }
 
 class NoAssistantIdError extends Error {
