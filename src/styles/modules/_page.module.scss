@@ -120,6 +120,12 @@
         cursor: pointer;
         background-color: color.adjust($primary-color, $lightness: -10%);
         color: $secondary-color;
+        transition: all 0.2s;
+
+        [data-theme="light"] & {
+          background-color: $secondary-alt-two;
+          color: $primary-color;
+        }
 
         &:hover {
           background-color: color.adjust($primary-color, $lightness: -3%);

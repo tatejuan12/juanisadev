@@ -10,11 +10,11 @@
   border-radius: 10px;
   margin: 25px 0 0 0;
   background-color: $background-end-rgb;
-  // border: thin solid $blood-red;
-  //[data-theme="light"] & {
-  //  background-color: $tertiary-alt-one;
-  //
-  //}
+
+  [data-theme="light"] & {
+    background-color: $tertiary-color;
+  }
+
   @include mobile {
     margin: 0 0 25px;
   }
@@ -25,6 +25,12 @@
     align-items: center;
     @include mobile {
       display: flex;
+    }
+
+    [data-theme="light"] & {
+      & :global(.hamburger-react) {
+        color: $primary-color
+      }
     }
 
     &_menu {
@@ -40,6 +46,10 @@
       background-color: $primary-alt-one;
       text-align: end;
       overflow: hidden;
+
+      [data-theme="light"] & {
+        background-color: $secondary-alt-three;
+      }
 
       &_icons {
         display: flex;
@@ -76,6 +86,10 @@
     align-items: center;
     justify-content: center;
     color: $tertiary-color;
+
+    [data-theme="light"] & {
+      color: $secondary-alt-two;
+    }
   }
 
   &_rightbar {

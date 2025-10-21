@@ -32,7 +32,7 @@ body {
     color: $background-start-rgb;
   }
 
-  transition: background 0.125s linear;
+  transition: background-color 0.125s linear, color 0.125s linear;
 }
 
 div.app {
